@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Anees × Kuchu Puchu ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    background:#07141a;
+    font-family:Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    color:white;
+}
+
+/* Background glow */
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,
+        rgba(255,70,140,.20),
+        transparent 65%);
+    top:-150px;
+    left:-150px;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,
+        rgba(120,80,255,.18),
+        transparent 65%);
+    bottom:-180px;
+    right:-150px;
+}
+
+.wrapper{
+    width:min(92%,420px);
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+/* Heading */
+.title{
+    font-size:clamp(32px,9vw,48px);
+    font-weight:800;
+    margin-bottom:22px;
+    letter-spacing:-1px;
+}
+
+.title span{
+    color:#baff35;
+}
+
+/* Main card */
+.card{
+    background:#fff;
+    color:#111;
+    border-radius:5px;
+    padding:28px 18px 35px;
+    min-height:430px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 20px 70px rgba(0,0,0,.45);
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:#ffd6e6;
+    border-radius:50%;
+    top:-100px;
+    right:-80px;
+}
+
+.emoji{
+    font-size:95px;
+    margin-bottom:10px;
+    animation:bounce 1.8s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
+}
+
+.small{
+    font-size:14px;
+    color:#777;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:32px;
+    font-weight:800;
+    margin-bottom:28px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    width:100%;
+}
+
+button{
+    border:0;
+    border-radius:25px;
+    padding:13px 27px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+#yes{
+    background:#ff4d9a;
+    color:white;
+}
+
+#yes:hover{
+    transform:scale(1.08);
+}
+
+#no{
+    background:#eee;
+    color:#555;
+    position:relative;
+}
+
+/* Surprise */
+#surprise{
+    display:none;
+    animation:pop .7s ease;
+}
+
+@keyframes pop{
+    from{
+        opacity:0;
+        transform:scale(.6);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.love{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.surprise-title{
+    font-size:29px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.message{
+    color:#555;
+    font-size:17px;
+    line-height:1.6;
+}
+
+.signature{
+    margin-top:22px;
+    color:#ff4d9a;
+    font-weight:bold;
+}
+
+/* Floating hearts */
+.heart{
+    position:fixed;
+    bottom:-30px;
+    font-size:22px;
+    pointer-events:none;
+    animation:floatUp 4s linear forwards;
+    z-index:10;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) scale(.7);
+        opacity:0;
+    }
+    15%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-110vh)
+                   translateX(var(--move))
+                   rotate(25deg);
+        opacity:0;
+    }
+}
+
+/* Bottom text */
+.footer{
+    margin-top:18px;
+    font-size:12px;
+    color:#8b969b;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="title">
+        <span>Anees</span> × Kuchu Puchu ❤️
+    </div>
+
+    <div class="card">
+
+        <!-- Question section -->
+        <div id="questionBox">
+
+            <div class="emoji">🥰</div>
+
+            <div class="small">
+                Kuchu Puchu, ek chhota sa sawaal...
+            </div>
+
+            <div class="question">
+                Do you love me? ❤️
+            </div>
+
+            <div class="buttons">
+                <button id="yes" onclick="sayYes()">
+                    YES ❤️
+                </button>
+
+                <button id="no" onclick="moveNo()">
+                    NO 😜
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Surprise section -->
+        <div id="surprise">
+
+            <div class="love">💖🥰💖</div>
+
+            <div class="surprise-title">
+                I knew it! 😭❤️
+            </div>
+
+            <div class="message">
+                Kuchu Puchu, tum bohat special ho.
+                <br><br>
+                Bas hamesha khush rehna,
+                smile karti rehna aur
+                apni cute si vibes kabhi mat khona. 🥹❤️
+            </div>
+
+            <div class="signature">
+                — Always, Anees ❤️
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Made with ❤️ specially for Kuchu Puchu
+    </div>
+
+</div>
+
+
+<script>
+
+/* NO button moves */
+function moveNo(){
+
+    const btn = document.getElementById("no");
+
+    const maxX = window.innerWidth - 120;
+    const maxY = window.innerHeight - 70;
+
+    const x = Math.max(10, Math.random() * maxX);
+    const y = Math.max(10, Math.random() * maxY);
+
+    btn.style.position = "fixed";
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+
+    createHeart();
+}
+
+
+/* YES button */
+function sayYes(){
+
+    document.getElementById("questionBox").style.display = "none";
+    document.getElementById("surprise").style.display = "block";
+
+    for(let i=0;i<35;i++){
+        setTimeout(createHeart, i * 80);
+    }
+}
+
+
+/* Floating hearts */
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    const hearts = ["❤️","💖","💕","💗","💓","🥰","✨"];
+
+    heart.className = "heart";
+    heart.innerHTML =
+        hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.setProperty(
+        "--move",
+        (Math.random()*160 - 80) + "px"
+    );
+
+    heart.style.animationDuration =
+        (3 + Math.random()*3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+}
+
+
+/* Background hearts */
+setInterval(()=>{
+    createHeart();
+},1200);
+
+</script>
+
+</body>
+  </html>
